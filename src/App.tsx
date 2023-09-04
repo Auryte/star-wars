@@ -1,18 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
 import React from 'react';
+import { AppRoutes } from './AppRoutes';
+import { BrowserRouter } from 'react-router-dom';
 
-export const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
-    </header>
-  </div>
+//styles
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import { theme } from './styles/theme';
+
+export const App: React.FC = () => (
+  <BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AppRoutes />
+    </ThemeProvider>
+  </BrowserRouter>
 );
-

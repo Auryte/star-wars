@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { Skeleton, TableCell } from '@mui/material';
-
 // Styles
+import { Skeleton, TableCell } from '@mui/material';
 import { StyledTableRow } from 'src/styles/styled';
 
 type TableRowSkeleton = {

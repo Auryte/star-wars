@@ -6,14 +6,22 @@ declare module '@mui/material/styles/createPalette' {
     grey: string;
   }
 }
+declare module '@mui/material/styles' {
+  interface Theme {
+    themeName: string;
+  }
+  interface ThemeOptions {
+    themeName?: string;
+  }
+}
 
-const PRIMARY_COLOR = '#488A99';
+const PRIMARY_COLOR = '#DBAE58';
 const PRIMARY_COLOR_DARK = '#204051';
-const PRIMARY_COLOR_LIGHT = '#84A9AC';
 const SECONDARY_COLOR = '#CAE8D5';
 const SECONDARY_COLOR_LIGHT = '#DBAE58';
 
-export const theme: Theme = createTheme({
+const theme: Theme = createTheme({
+  themeName: 'normal',
   breakpoints: {
     values: {
       xs: 0,
@@ -24,10 +32,13 @@ export const theme: Theme = createTheme({
     }
   },
   palette: {
+    background: {
+      default: '#FFFFFF'
+    },
     primary: {
-      main: SECONDARY_COLOR_LIGHT,
+      main: PRIMARY_COLOR,
       dark: PRIMARY_COLOR_DARK,
-      light: SECONDARY_COLOR_LIGHT
+      light: PRIMARY_COLOR
     },
     secondary: {
       main: SECONDARY_COLOR,
@@ -232,3 +243,4 @@ export const theme: Theme = createTheme({
     }
   }
 });
+export default theme;

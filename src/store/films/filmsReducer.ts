@@ -1,7 +1,6 @@
 import { FilmsActions } from './filmsAction';
 import { FilmsReduxState } from 'src/types/reduxState';
-import { FilmData } from 'src/types';
-
+import { FilmData } from './types';
 export interface RequestFilms {
   type: FilmsActions.REQUEST_FILMS;
 }

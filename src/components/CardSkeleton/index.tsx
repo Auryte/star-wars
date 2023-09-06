@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
 import { Skeleton, Card } from '@mui/material';
 
-// Styles
-
 type CardSkeleton = {
   count: number;
 };

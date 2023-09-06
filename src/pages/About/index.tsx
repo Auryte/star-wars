@@ -1,28 +1,13 @@
-import { Box, Typography } from '@mui/material';
-import React from 'react';
+import React, { FC } from 'react';
 import MainImage from '../../components/assets/star-wars-wallpaper-4.jpg';
+//styles
+import { Box, Typography } from '@mui/material';
+import { AboutImageWrapper, AboutPageTextWrapper, AboutPageWrapper } from 'src/styles/styled';
 
-export const About = () => (
-  <Box sx={{ marginTop: '50px', marginLeft: '280px', position: 'relative' }}>
-    <Box
-      component="img"
-      sx={{
-        height: 'fit-content',
-        width: '100%'
-      }}
-      alt="The Star Wars"
-      src={MainImage}
-    />
-    <Box
-      sx={{
-        backgroundColor: 'rgba(320, 320, 320, .80)',
-        position: 'absolute',
-        top: '50%',
-        width: '80%',
-        zIndex: '1050',
-        padding: 3,
-        marginLeft: '10%'
-      }}>
+export const About: FC = () => (
+  <Box sx={AboutPageWrapper}>
+    <Box component="img" sx={AboutImageWrapper} alt="The Star Wars" src={MainImage} />
+    <Box sx={AboutPageTextWrapper}>
       <Typography variant="h2">About Star Wars</Typography>,
       <Typography variant="h5">
         Star Wars is an American epic space opera multimedia franchise created by George Lucas,

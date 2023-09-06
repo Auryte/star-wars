@@ -1,5 +1,5 @@
-import { FilmData } from "src/types";
+import { FilmData } from 'src/store/films/types';
 
 export interface ThunkParams {
-  data: FilmData[],
+  data: FilmData[];
 }

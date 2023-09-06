@@ -1,52 +1,78 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState, useCallback, useContext } from 'react';
+import axios from 'axios';
 import { FilmCard } from 'src/components/FilmCard';
-import { Loader } from 'src/components/Loader/Loader';
-import { useAppSelector, useFilmsDispatch } from 'src/store/hooks';
+import { Error } from 'src/components/error';
+import { CustomThemeContext } from 'src/components/CustomThemeProvider';
+import { PeopleTable } from 'src/components/PeopleTable';
+import { Loader } from 'src/components/Loader';
+import { useAppSelector, useFilmsDispatch, usePeopleDispatch } from 'src/store/hooks';
 import { FilmsSelector } from 'src/store/films/filmsSelector';
 import { loadFilms } from 'src/store/films/filmsAction';
-import { ErrorMessage } from 'src/components/error/ErrorMessage';
-import { CardSkeleton } from 'src/components/CardSkeleton';
-import { Box, Grid, Typography } from '@mui/material';
+import { fetchPeople } from 'src/store/people/peopleActions';
+import { PeopleSelector } from 'src/store/people/peopleSelector';
+//styles
+import { Box, Grid, Typography, Button } from '@mui/material';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import ModeNightIcon from '@mui/icons-material/ModeNight';
+//constants
+import { THEME_NAME } from 'src/constants';
+//types
+import { FilmData } from 'src/store/films/types';
+import { CardContainerWrapper, MainPageWrapper, mainPageInnerWrapper } from 'src/styles/styled';
 
 export const Main: FC = () => {
   const { loading, data: films, error } = useAppSelector(FilmsSelector);
+  const { loadingPeople, people, errorPeople } = useAppSelector(PeopleSelector);
+  const { currentTheme, setTheme } = useContext(CustomThemeContext);
+
   const dispatch = useFilmsDispatch();
+  const dispatchPeople = usePeopleDispatch();
+  const [selectedFilm, setSelectedFilm] = useState<FilmData | null>(null);
 
   useEffect(() => {
     dispatch(loadFilms());
   }, []);
 
+  const handleOnClick = async (film: FilmData) => {
+    setSelectedFilm(film);
+    film && film.characters && dispatchPeople(fetchPeople(film.characters));
+  };
+
+  const handleThemeChange = useCallback(() => {
+    if (currentTheme === THEME_NAME.DARK) {
+      setTheme(THEME_NAME.NORMAL);
+    } else {
+      setTheme(THEME_NAME.DARK);
+    }
+  }, [currentTheme, setTheme]);
+
   return (
-    <Box sx={{ marginTop: '50px', marginLeft: '280px' }}>
-      <Typography variant="h2">Films</Typography>
-      {loading && '...Loading'}
-      {error && <ErrorMessage />}
-      <Grid
-        container
-        wrap={'nowrap'}
-        // sx={{ width: 'fit-content' }}
-        sx={{
-          // gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '20px',
-          justifyContent: 'left',
-          alignItems: 'center',
-          width: 'calc(100vw - 310px)',
-          height: '310px',
-          padding: '20px 30px',
-          overflowX: 'scroll'
-        }}>
-        {films?.map(({ title, episode_id, release_date }) => (
-          <Grid
-            key={episode_id}
-            item
-            style={{
-              backgroundColor: 'yellow',
-              width: '400px'
-            }}>
-            <FilmCard key={episode_id} title={title} episode={episode_id} date={release_date} />
-          </Grid>
-        ))}
-      </Grid>
+    <Box sx={MainPageWrapper}>
+      <Box sx={mainPageInnerWrapper}>
+        <Typography variant="h2">Films</Typography>
+        <Button onClick={handleThemeChange}>
+          {currentTheme === THEME_NAME.DARK ? (
+            <LightModeIcon fontSize="large" />
+          ) : (
+            <ModeNightIcon fontSize="large" />
+          )}
+        </Button>
+      </Box>
+      {loading && <Loader />}
+      {!error ? (
+        <Grid container wrap={'nowrap'} sx={CardContainerWrapper}>
+          {films?.map((film) => (
+            <Grid key={film.episode_id} item>
+              <FilmCard film={film} onClick={handleOnClick} />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Error error={error} />
+      )}
+      {selectedFilm ? (
+        <PeopleTable people={people} loading={loadingPeople} error={errorPeople} />
+      ) : null}
     </Box>
   );
 };

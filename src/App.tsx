@@ -1,16 +1,17 @@
 import React from 'react';
 import { AppRoutes } from './AppRoutes';
 import { BrowserRouter } from 'react-router-dom';
+import CustomThemeProvider from './components/CustomThemeProvider';
 
 //styles
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { theme } from './styles/theme';
+import { CssBaseline } from '@mui/material';
+import './styles/globals.css';
 
 export const App: React.FC = () => (
   <BrowserRouter>
-    <ThemeProvider theme={theme}>
+    <CustomThemeProvider>
       <CssBaseline />
       <AppRoutes />
-    </ThemeProvider>
+    </CustomThemeProvider>
   </BrowserRouter>
 );

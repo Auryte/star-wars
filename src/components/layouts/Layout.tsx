@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from '../Header';
-import { Footer } from '../Footer';
 
-const Layout = () => (
+const Layout: FC = () => (
   <>
     <Header />
     <Outlet />
-    <Footer />
   </>
 );
 

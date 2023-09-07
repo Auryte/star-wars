@@ -21,6 +21,6 @@
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["react-app-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["react-app-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js"],
   "exclude": ["node_modules"]
 }

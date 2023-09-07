@@ -23,7 +23,12 @@ export const PeopleTable: FC<FilmCardtypes> = ({ people, loading, error }) => {
   );
   return (
     <>
-      <TableContainer sx={{ mt: 5, height: '280px', overflowY: 'scroll' }}>
+      <TableContainer
+        sx={{
+          mt: 5,
+          height: '280px',
+          overflowY: 'scroll'
+        }}>
         <Table sx={{ minWidth: 500 }} size="small">
           <TableHead>
             <TableRow>

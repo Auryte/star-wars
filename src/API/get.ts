@@ -1,9 +1,10 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { baseUrl } from 'src/constants';
 import { FilmData } from 'src/store/films/types';
 import { Person } from 'src/store/people/types';
 
 const swapiClient: AxiosInstance = axios.create({
-  baseURL: 'https://swapi.dev/api/',
+  baseURL: baseUrl,
   headers: { 'content-type': 'application/json' }
 });
 
@@ -18,28 +19,30 @@ export const getFilms = async (): Promise<FilmData[]> => {
 
 export const getPeople = async (urls: string[]): Promise<Person[]> => {
   try {
+    //While working on the character request, I observed that occasionally, some requests fail for various reasons.
+
     const responses: Person[] = [];
     await Promise.allSettled(urls.map((url) => axios.get(url))).then((results) => {
       results.forEach((result) => {
         if (result.status === 'fulfilled') responses.push(result.value.data);
         else {
           responses.push({
-            name: result.reason.message,
-            height: result.reason.message,
-            mass: result.reason.message,
-            hair_color: result.reason.message,
-            skin_color: result.reason.message,
-            eye_color: result.reason.message,
-            birth_year: result.reason.message,
-            gender: result.reason.message,
-            homeworld: result.reason.message,
-            films: result.reason.message,
-            species: result.reason.message,
-            vehicles: result.reason.message,
-            starships: result.reason.message,
-            created: result.reason.message,
-            edited: result.reason.message,
-            url: result.reason.message
+            name: `Not found - ${result.reason.message}`,
+            height: '-',
+            mass: '-',
+            hair_color: '-',
+            skin_color: '-',
+            eye_color: '-',
+            birth_year: '-',
+            gender: '-',
+            homeworld: '-',
+            films: ['-'],
+            species: ['-'],
+            vehicles: ['-'],
+            starships: ['-'],
+            created: '-',
+            edited: '-',
+            url: '-'
           });
         }
       });

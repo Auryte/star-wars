@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState, useCallback, useContext } from 'react';
-import axios from 'axios';
 import { FilmCard } from 'src/components/FilmCard';
 import { Error } from 'src/components/error';
 import { CustomThemeContext } from 'src/components/CustomThemeProvider';

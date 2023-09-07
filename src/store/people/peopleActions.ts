@@ -28,7 +28,6 @@ const requestPeopleFailed = (error: string): RequestPeopleFailure => ({
 });
 
 export const fetchPeople = (urls: string[]) => async (dispatch: Dispatch<PeopleActionTypes>) => {
-  console.log('urls', urls);
   dispatch(requestPeople());
   getPeople(urls)
     .then((res) => dispatch(requestPeopleSuccess(res)))

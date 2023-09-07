@@ -8,3 +8,5 @@ export const logo =
   'https://res.cloudinary.com/dlvhpqrkd/image/upload/v1693769506/StarWars/logo.png';
 
 export const categories = ['Films', 'About'];
+
+export const baseUrl = 'https://swapi.dev/api/';

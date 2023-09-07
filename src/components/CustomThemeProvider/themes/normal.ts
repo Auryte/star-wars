@@ -6,6 +6,7 @@ declare module '@mui/material/styles/createPalette' {
     grey: string;
   }
 }
+
 declare module '@mui/material/styles' {
   interface Theme {
     themeName: string;
@@ -238,6 +239,38 @@ const theme: Theme = createTheme({
         standardInfo: {
           backgroundColor: 'blue',
           color: 'white'
+        }
+      }
+    },
+    MuiGrid: {
+      styleOverrides: {
+        root: {
+          '&::-webkit-scrollbar': {
+            height: 10
+          },
+          '&::-webkit-scrollbar-track': {
+            backgroundColor: '#F5F5F5'
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '#C4C4C4',
+            borderRadius: '5px'
+          }
+        }
+      }
+    },
+    MuiTableContainer: {
+      styleOverrides: {
+        root: {
+          '&::-webkit-scrollbar': {
+            width: 10
+          },
+          '&::-webkit-scrollbar-track': {
+            backgroundColor: '#F5F5F5'
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '#C4C4C4',
+            borderRadius: '5px'
+          }
         }
       }
     }

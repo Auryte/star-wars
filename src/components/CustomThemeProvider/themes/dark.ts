@@ -18,6 +18,7 @@ const PRIMARY_COLOR = '#DBAE58';
 const PRIMARY_COLOR_DARK = '#204051';
 const PRIMARY_COLOR_LIGHT = '#504A4A';
 const SECONDARY_COLOR = '#323030';
+const SECONDARY_COLOR_LIGHT = '#818181';
 
 const theme: Theme = createTheme({
   themeName: 'dark',
@@ -274,7 +275,33 @@ const theme: Theme = createTheme({
     MuiGrid: {
       styleOverrides: {
         root: {
-          backgroundColor: PRIMARY_COLOR_LIGHT
+          backgroundColor: PRIMARY_COLOR_LIGHT,
+          '&::-webkit-scrollbar': {
+            height: 10
+          },
+          '&::-webkit-scrollbar-track': {
+            backgroundColor: SECONDARY_COLOR_LIGHT
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '#C4C4C4',
+            borderRadius: '5px'
+          }
+        }
+      }
+    },
+    MuiTableContainer: {
+      styleOverrides: {
+        root: {
+          '&::-webkit-scrollbar': {
+            width: 10
+          },
+          '&::-webkit-scrollbar-track': {
+            backgroundColor: SECONDARY_COLOR_LIGHT
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '#C4C4C4',
+            borderRadius: '5px'
+          }
         }
       }
     }

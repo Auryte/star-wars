@@ -1,4 +1,4 @@
- ## **Star Wars Films Project**
+ # **Star Wars Films Project**
 
 Welcome to the Star Wars Films Project! This is a web application built using React, React-redux, and Typescript, with testing done using react-testing library, jest, and MSW. The project features a responsive design and offers both light and dark themes for an enhanced user experience.
 
@@ -16,7 +16,7 @@ To get started with the Star Wars Films Project on your local machine, follow th
 
 1. Clone the repository:
 
-git clone https://github.com/your-username/star-wars.git 
+git clone https://github.com/Auryte/star-wars.git 
 
 1. Navigate to the project directory:
 
@@ -43,7 +43,7 @@ The Star Wars Films Project offers the following features:
 - **React-Redux:** Utilizes React with Redux for efficient state management.
 - **Typescript:** The codebase is written in Typescript, enhancing code quality and maintainability.
 
-**Testing**
+## **Testing**
 
 Testing has been carried out to ensure the reliability and correctness of the application. The following testing tools and libraries were used:
 

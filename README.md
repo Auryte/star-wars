@@ -1,22 +1,22 @@
-**Star Wars Films Project**
+ ## **Star Wars Films Project**
 
 Welcome to the Star Wars Films Project! This is a web application built using React, React-redux, and Typescript, with testing done using react-testing library, jest, and MSW. The project features a responsive design and offers both light and dark themes for an enhanced user experience.
 
-**Table of Contents**
+# **Table of Contents**
 
-- [Installation]
-- [Usage]
-- [Features]
-- [Testing]
-- [Deployment]
+- Installation
+- Usage
+- Features
+- Testing
+- Deployment
 
-**Installation**
+# **Installation**
 
 To get started with the Star Wars Films Project on your local machine, follow these steps:
 
 1. Clone the repository:
 
-git clone https://github.com/your-username/star-wars-films.git 
+git clone https://github.com/your-username/star-wars.git 
 
 1. Navigate to the project directory:
 
@@ -26,7 +26,7 @@ cd star-wars
 
 npm install 
 
-**Usage**
+# **Usage**
 
 Once you have installed the dependencies, you can start the application by running:
 
@@ -34,7 +34,7 @@ npm start
 
 This command will start the app in development mode and open it in your default web browser at [http://localhost:3000](http://localhost:3000/).
 
-**Features**
+# **Features**
 
 The Star Wars Films Project offers the following features:
 
@@ -55,9 +55,9 @@ You can run the tests using the following command:
 
 npm test 
 
-**Deployment**
+# **Deployment**
 
-The Star Wars Films Project is deployed and accessible online. You can visit the live application at [star-wars-theta-one.vercel.app](). Explore the Star Wars universe and enjoy the features provided by this web application!
+The Star Wars Films Project is deployed and accessible online. You can visit the live application at https://star-wars-theta-one.vercel.app/. Explore the Star Wars universe and enjoy the features provided by this web application!
 
 Feel free to report issues, or suggest improvements. May the Force be with you! 🌟🚀
 
